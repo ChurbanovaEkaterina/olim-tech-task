@@ -146,13 +146,6 @@ nav div:first-child{
     padding: 10px;
 }
 
-.here__will__be__img{
-    width: 15em;
-    height: 15em;
-    background-color: brown;
-    margin: 10px auto;
-    padding: 5px;
-}
 .like__dislike__btns{
     display: flex;
     justify-content: space-between;
@@ -173,20 +166,6 @@ nav div:first-child{
 .author__date div{
     font-size: 12px;
 }
-.open__edit__post{
-    position: fixed;
-    background-color: #607d8b;
-    width: 300px;
-    height: 420px;
-    top: 8em;
-    text-align: center;
-    margin: auto;
-    left: 0;
-    right: 0;
-}
-.within__edit__post{
-    padding-top: 3em;
-}
 .input__comment{
     display: flex;
     justify-content: center;
@@ -194,6 +173,7 @@ nav div:first-child{
 .input__comment input{
     width: 70%;
     padding: 5px;
+    border: 1px solid #80808070;
 }
 .input__comment button{
     background-color: #3f51b5;
@@ -230,9 +210,20 @@ nav div:first-child{
 .div__comment{
     background-color: white;
     width: 90%;
-    border: 1px black solid;
+    border: 1px #8080806e solid;
     margin: 5px auto;
     padding: 2px;
+}
+.div__comment div:first-child{
+    display: flex;
+    justify-content: flex-end;
+}
+.div__comment div:nth-child(2){
+    padding: 5px;
+}
+.div__comment div:last-child{
+    display: flex;
+    justify-content: flex-start;
 }
 .within__comment__post{
     padding-top: 1em;
@@ -254,18 +245,9 @@ nav div:first-child{
     overflow: scroll;
     padding: 10px;
     max-height: 20em;
+    margin-top: 8px;
 }
-.div__comment div:first-child{
-    display: flex;
-    justify-content: flex-end;
-}
-.div__comment div:nth-child(2){
-    padding: 5px;
-}
-.div__comment div:last-child{
-    display: flex;
-    justify-content: flex-start;
-}
+
 .edit__comment textarea{
     width: 80%;
 }
