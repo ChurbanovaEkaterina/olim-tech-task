@@ -13,13 +13,15 @@ class CreatePost extends React.Component{
         this.state={
             postNewPostInfo:{
                 username: this.props.username,
-                title: ""
+                title: "",
+                date:0
             },
             formData:null,
             responseId:0,
         }
       }
       handleChange=(e)=>{
+        
         this.state.postNewPostInfo[e.target.name]=e.target.value;
         this.setState({
             formData:e.target.files[0]
@@ -28,7 +30,16 @@ class CreatePost extends React.Component{
             postNewPostInfo:{...this.state.postNewPostInfo}
         })
       }
+      
       sendImg = async(idNumber) => {
+        console.log(this.formatDate())
+        // This date does not work :(
+
+        // this.setState({
+        //     postNewPostInfo:{
+        //         date:this.formatDate()
+        //     }
+        // })
         let formData1 = new FormData();        
         formData1.append("picture", this.state.formData)
         try {
@@ -47,9 +58,7 @@ class CreatePost extends React.Component{
         e.preventDefault();
         const postNewPost = async (value) => { 
             try {
-              console.log(value);
               const response = await axios.post(`http://localhost:8080/post/`, value);
-              console.log(response.data.result.id)
               this.setState({
                 responseId:response.data.result.id
               })
@@ -63,7 +72,6 @@ class CreatePost extends React.Component{
           this.props.openCloseCreateNewPostWindow()
           setTimeout(() => {
             this.props.triggerFun()
-            console.log(this.state.responseId)
           }, 5000);
       }
       getResult=async()=>{
@@ -74,6 +82,12 @@ class CreatePost extends React.Component{
             console.log(error)
         }
     }
+    formatDate=(date = new Date())=> {
+        const year = date.toLocaleString('default', {year: 'numeric'});
+        const month = date.toLocaleString('default', {month: '2-digit'});
+        const day = date.toLocaleString('default', {day: '2-digit'});
+        return [year, month, day].join('');
+      }
     
       render(){
         return(

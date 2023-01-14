@@ -10,7 +10,6 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 class Comments extends React.Component{
 
@@ -99,11 +98,11 @@ class Comments extends React.Component{
             return(
                 <>
                     {this.state.openEditComment?
-                        <>
-                        <input value={this.state.comment} onChange={(e)=>{this.setState({ comment: e.target.value})}}/>
-                        <button onClick={() => {this.saveEditedComment()}}>Save</button>
-                        <button onClick={()=>{this.setState({ openEditComment: false, comment: this.state.formerComment})}}>Cancel</button>
-                        </>
+                        <div className="edit__comment">
+                            <textarea value={this.state.comment} onChange={(e)=>{this.setState({ comment: e.target.value})}}/>
+                            <button onClick={() => {this.saveEditedComment()}}>Save</button>
+                            <button onClick={()=>{this.setState({ openEditComment: false, comment: this.state.formerComment})}}>Cancel</button>
+                        </div>
                         :
                         <>
                             <div>

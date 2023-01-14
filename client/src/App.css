@@ -2,6 +2,9 @@
 *{
     font-family: 'Raleway', sans-serif;
 }
+body{
+    background-color: gainsboro;
+}
 .section__for__all__posts{
     display: grid;
     margin: 10px;
@@ -31,7 +34,21 @@
 .btns__turn__pages{
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+.btns__turn__pages button:first-child{
+    background-color: dimgrey;
+    border: dimgrey;
+    color: white;
+    border-radius: 12px 0 0 12px;
+    font-size: 16px;
+}
+.btns__turn__pages button:last-child{
+    background-color: dimgrey;
+    border: dimgrey;
+    color: white;
+    border-radius: 0 12px 12px 0;
+    font-size: 16px;
 }
 nav{
     padding: 1%;
@@ -70,10 +87,10 @@ nav div:first-child{
 /* create post */
 
 .dialog__create__post{
-    background-color: rgb(105, 199, 163);
+    background-color: #607d8b;
     position: absolute;
     width: 20em;
-    height: 20em;
+    height: 10em;
     text-align: center;
     position: absolute;
     top: 0;
@@ -81,6 +98,7 @@ nav div:first-child{
     bottom: 0;
     left: 0;
     margin: auto;
+    border-radius: 10px;
 }
 .cancel__btn{
     right: 0;
@@ -92,7 +110,23 @@ nav div:first-child{
     font-weight: 600;
 }
 #formElem{
-    margin-top: 50px;
+    margin-top: 30px;
+}
+#formElem textarea{
+    width: 90%;
+    height: 3em;
+    padding: 5px;
+}
+#formElem button{
+    background-color: firebrick;
+    border: 1px solid firebrick;
+    width: 50%;
+    margin: 5px;
+    color: wheat;
+    font-size: 16px;
+}
+.number__page{
+    margin: 10px;
 }
 /* post */
 
@@ -101,7 +135,6 @@ nav div:first-child{
     flex-direction: column;
     border: 1px solid grey;
     border-radius: 5px;
-    padding: 10px;
     margin: 10px;
     background-color: antiquewhite;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
@@ -109,7 +142,10 @@ nav div:first-child{
 .delete__edit__btn{
     display: flex;
     justify-content: flex-end;
+    padding: 5px;
+    padding: 10px;
 }
+
 .here__will__be__img{
     width: 15em;
     height: 15em;
@@ -121,9 +157,21 @@ nav div:first-child{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+}
+.count__of__likes{
+    font-size: 14px;
 }    
 .div__with__title{
-    padding: 5px;
+    padding: 1px 15px 5px;
+}
+.author__date{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.author__date div{
+    font-size: 12px;
 }
 .open__edit__post{
     position: fixed;
@@ -139,6 +187,36 @@ nav div:first-child{
 .within__edit__post{
     padding-top: 3em;
 }
+.input__comment{
+    display: flex;
+    justify-content: center;
+}
+.input__comment input{
+    width: 70%;
+    padding: 5px;
+}
+.input__comment button{
+    background-color: #3f51b5;
+    border: #3f51b5 1px solid;
+    color: white;
+    border-radius: 0 12px 12px 0;
+}
+.within__edit__post{
+    display: flex;
+    padding: 1px;
+    justify-content: center;
+}
+.within__edit__post textarea{
+    padding: 5px;
+    border: 1px solid #e2d0d0;
+}
+.line__between{
+    width: 100%;
+    border-bottom: 1px black solid;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
 /* comment */
 .fullscreen-container {
     position: fixed;
@@ -159,9 +237,23 @@ nav div:first-child{
 .within__comment__post{
     padding-top: 1em;
 }
+
+.within__edit__post button:nth-child(3){
+    background-color: #ccced9;
+    color: black;
+    border: 1px solid #ccced9;
+}
+.within__edit__post button:last-child{
+    background-color: #e34208;
+    color: white;
+    border: 1px solid #e34208;
+    border-radius: 0 12px 12px 0;
+}
 .list__of__post{
-    height: 20em;
+    height: fit-content;
     overflow: scroll;
+    padding: 10px;
+    max-height: 20em;
 }
 .div__comment div:first-child{
     display: flex;
@@ -174,7 +266,19 @@ nav div:first-child{
     display: flex;
     justify-content: flex-start;
 }
-
+.edit__comment textarea{
+    width: 80%;
+}
+.edit__comment button:nth-child(2){
+    background-color: #3f51b5;
+    color: white;
+    border: 1px solid #3f51b5;
+}
+.edit__comment button:last-child{
+    background-color: #e34208;
+    color: white;
+    border: 1px solid #e34208;
+}
 /* sign page */
 .sign__in__main{
     background-color: #0e1436db;
@@ -183,23 +287,28 @@ nav div:first-child{
     height: 30em;
     text-align: center;
     margin-top: 10%;
+    border-radius: 12px;
 }
 .within__sign__in__main{
     padding: 20%;
+    
 }
 .within__sign__in__main h3{
     color: white;
+    font-size: 25px;
 }
 .input__sign__in{
     border: none;
+    width: 70%;
+    padding: 5px;
+    border-radius: 12px 0 0 12px;
 }
 .button__sign__in{
     border: none;
     background-color: firebrick;
     color: white;
-}
-textarea{
-    width: 70%;
+    padding: 5px;
+    border-radius: 0 12px 12px 0;
 }
 .input__search input{
     padding: 10px;

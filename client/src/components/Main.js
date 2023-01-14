@@ -15,7 +15,7 @@ import { getAlldata,
 
 
 const Main=(props)=> {
-    const {userName, setUserName, setLogin, openDialog, setOpenDialog} = useContext(AppContext);
+    const {userName, setUserName, setLogin} = useContext(AppContext);
     const [totalLength, setTotalLength]=useState(1)
     const page = props.page
     const user = userName
@@ -31,7 +31,7 @@ const Main=(props)=> {
 
     useEffect(()=>{
         getResult()
-        //props.getAlldata(page)
+        console.log(props.allData)
     },[page, props.booleanForOpenComments, props.trigger])
     
     const getResult=async()=>{
@@ -85,6 +85,7 @@ const Main=(props)=> {
             {
               props.allData.length<9&&page!==1&&<button onClick={()=>{props.turnLeft(props.page)}}>Previous page</button>
             }
+            <div className="number__page">Page №{props.page}</div> 
             {
               props.allData.length===9&&totalLength>9&&<button onClick={()=>{props.turnRight(props.page)}}>Next page</button>
             }

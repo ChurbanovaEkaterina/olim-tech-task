@@ -177,47 +177,54 @@ class Post extends React.Component{
                 <img src={this.state.postInfo.imageSrc} alt="img"></img>
                 <div className="like__dislike__btns">
                     <div>
-                    {this.state.postInfo.dislikes.includes(this.state.username)?<ThumbDownAltIcon onClick={()=>{this.addDislike(this.state.postInfo.id, this.state.username)}} />:
-                        <ThumbDownOffAltIcon onClick={()=>{this.addDislike(this.state.postInfo.id, this.state.username)}} />}
+                    {this.state.postInfo.dislikes.includes(this.state.username)?
+                        <ThumbDownAltIcon 
+                             onClick={()=>{this.addDislike(this.state.postInfo.id, this.state.username)}} />
+                             :
+                        <ThumbDownOffAltIcon 
+                               onClick={()=>{this.addDislike(this.state.postInfo.id, this.state.username)}} />}
                     {!this.state.postInfo.likes.includes(this.state.username)?
-                        <ThumbUpOffAltIcon onClick={()=>{this.addLike(this.state.postInfo.id, this.state.username)}}/>:
-                        <ThumbUpAltIcon onClick={()=>{this.addLike(this.state.postInfo.id, this.state.username)}}/>}
-                        <ChatBubbleOutlineIcon onClick={() => {this.setState({ oppenCommentEditWindow: true});this.props.openCommentsDialog() }}/>
+                        <ThumbUpOffAltIcon 
+                               onClick={()=>{this.addLike(this.state.postInfo.id, this.state.username)}}/>:
+                        <ThumbUpAltIcon 
+                               onClick={()=>{this.addLike(this.state.postInfo.id, this.state.username)}}/>}
+                        <ChatBubbleOutlineIcon 
+                               onClick={() => {this.setState({ oppenCommentEditWindow: !this.state.oppenCommentEditWindow});this.props.openCommentsDialog() }}/>
                     </div>
-                    <div>Likes: {this.state.postInfo.likes.length-this.state.postInfo.dislikes.length}</div>
+                    <div className="count__of__likes">{this.state.postInfo.likes.length-this.state.postInfo.dislikes.length} likes</div>
                 </div>
-                <div className="div__with__title">{this.state.postInfo.title}</div>
-            </div>
-            {this.state.openEditWindow&&
-        <div className="fullscreen-container">
-                <div className="open__edit__post">
-                    <button onClick={this.closeWindow} className="cancel__btn">X</button>
+                {!this.state.openEditWindow?<div className="div__with__title">{this.state.postInfo.title}</div>:<div>
+                    
                     <div className="within__edit__post">
                         <textarea type="text" value={this.state.postInfo.title} onChange={(e)=>{this.editPost(e)}}/><br></br>
-                        <button onClick={()=>{this.saveTitle(this.state.postInfo.id)}}>Save</button>
+                        <button onClick={()=>{this.saveTitle(this.state.postInfo.id)}}>Save</button><button onClick={this.closeWindow} className="cancel__btn__edit__post">Cancel</button>
+                    </div>
+                </div>}
+                <div className="author__date">
+                    <div>
+                        by {this.state.postInfo.username}
+                    </div>
+                    <div>
+                        {this.state.postInfo.date}
                     </div>
                 </div>
-            </div>}
-                           
-            {this.state.oppenCommentEditWindow&&
-        <div className="fullscreen-container">
-                <div className="open__edit__post">
-                <button onClick={() => {this.setState({ oppenCommentEditWindow: false})}} className="cancel__btn">X</button>
-                    <div className="within__comment__post">
-                        <textarea type="text" placeholder="I am typing..." onChange={(e) => {this.setState({ comment: {...this.state.comment, text: e.target.value}})}}/><br></br>
+                {this.state.oppenCommentEditWindow&&<div className="within__comment__post">
+                    <div className="line__between"></div>
+                    <div className="input__comment">
+                        <input type="text" placeholder="I am typing..." onChange={(e) => {this.setState({ comment: {...this.state.comment, text: e.target.value}})}}/><br></br>
                         <button onClick={this.addNewComment}>Post</button>
-                        <div className="list__of__post">
-                        {this.props.allData[this.props.idNum].comments.map((item, index)=>{
-                            return(
-                                <div key={item.id} className="div__comment">
-                                    <Comments comments={item} page={this.props.numPage} key={index} nameUser={this.props.username}/>
-                                </div>
-                            )
-                        })}
-                        </div>  
                     </div>
-                </div>
-            </div>}
+                    <div className="list__of__post">
+                    {this.props.allData[this.props.idNum].comments.map((item, index)=>{
+                        return(
+                            <div key={item.id} className="div__comment">
+                                <Comments comments={item} page={this.props.numPage} key={index} nameUser={this.props.username}/>
+                            </div>
+                        )
+                    })}
+                    </div>  
+                </div>}
+            </div>
             </>
       )
     }

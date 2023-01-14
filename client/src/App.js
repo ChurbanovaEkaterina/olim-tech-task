@@ -6,7 +6,6 @@ import Main from './components/Main';
 export const AppContext = createContext(null);
 
 function App() {
-  const [openDialog, setOpenDialog] = useState(false)
   const [userName, setUserName]=useState("")
   const [login, setLogin]=useState(false)
 
@@ -18,7 +17,7 @@ function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{openDialog, setOpenDialog,userName, setUserName, login, setLogin}}>
+    <AppContext.Provider value={{userName, setUserName, login, setLogin}}>
       <div className="App">
         {login?<Main userName={userName}/>:
         <Login/>}
