@@ -38,6 +38,7 @@ const Main=(props)=> {
         try {
             const resultData = await axios.get(`http://localhost:8080/post/page/${page}`);
             props.getFullData(resultData.data.result)
+            console.log(resultData.data.result)
             setTotalLength(resultData.data.total)
         } catch (error) {
             console.log(error)

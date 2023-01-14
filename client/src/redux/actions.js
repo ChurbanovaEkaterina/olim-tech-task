@@ -8,7 +8,6 @@ export const TRIGGER_NUM="TRIGGER_NUM"
 export const OPEN_CLOSE_NEW_POST="OPEN_CLOSE_NEW_POST"
 
 export const getFullData =(fullData)=>{
-  //console.log("regetFullDatadux-------->>>>>>", fullData);
   return{
     type:ALL_DATA,
     payload:fullData
